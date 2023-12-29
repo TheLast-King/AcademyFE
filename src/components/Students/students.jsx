@@ -5,7 +5,9 @@ import Sidebar from '../sidebar';
 
 const Students = () => {
   const [users, setUsers] = useState([]);
-  const options = ['Option 1', 'Select 2', 'Select 3', 'Select 4'];
+  const [selectedOption, setSelectedOption] = useState('All'); // State to manage selected option
+
+  const options = ['All', 'John Doe', 'Jane Smith']; // Updated options array
 
   useEffect(() => {
     const fetchData = async () => {
@@ -41,29 +43,37 @@ const Students = () => {
     fetchData();
   }, []);
 
+  // Function to handle option change
+  const handleOptionChange = (event) => {
+    setSelectedOption(event.target.value);
+  };
+
+  // Filter users based on the selected option
+  const filteredUsers = selectedOption === 'All' ? users : users.filter(user => user.username === selectedOption);
+
   return (
     <div className='flex flex-row'>
-      <div className='mr-2'><Sidebar/></div>
+      <div className='mr-2'><Sidebar /></div>
       <div className='flex flex-col '>
         <div className='flex-row m-4'>
           <label htmlFor="teachers" className="mr-4 text-4xl">Students:</label>
-          <select id="teachers" className="w-24 m-4 border-solid border-2 border-indigo-600 rounded-lg">
+          <select id="teachers" className="w-24 m-4 border-solid border-2 border-indigo-600 rounded-lg" onChange={handleOptionChange} value={selectedOption}>
             {options.map((option, index) => (
-              <option key={index}>{option}</option>
+              <option key={index} value={option}>{option}</option>
             ))}
           </select>
         </div>
 
-        <div className='flex-row m-2 p-2'>
-          {users.map((user, index) => ( 
-            <div key={index} className='flex justify-center items-center'>
+        <div className='flex flex-row m-2 p-2'>
+          {filteredUsers.map((user, index) => (
+            <div key={index} className='m-2 p-2 border-solid border-2 border-indigo-600 rounded-lg justify-center items-center'>
               <div>
-                <h3>{user.username}</h3>
-                <p>Subject: {user.subject}</p>
-                <p>Schedule: {user.schedule}</p>
-                <p>Timing: {user.timing}</p>
-                <p>Attendance: {user.attendance}</p>
-                <p>Number of Students: {user.students}</p>
+                <div className='text-3xl'>{user.username}</div>
+                <p className='text-lg'><b>Subject:</b> {user.subject}</p>
+                <p><b>Schedule:</b> {user.schedule}</p>
+                <p><b>Timing:</b>  {user.timing}</p>
+                <p><b>Attendance:</b> {user.attendance}</p>
+                <p><b>Number of Students:</b> {user.students}</p>
               </div>
             </div>
           ))}

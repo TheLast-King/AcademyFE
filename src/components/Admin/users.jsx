@@ -45,11 +45,12 @@ const Users = () => {
             name="name"
             value={formData.name}
             onChange={handleChange}
-            className="w-1/2 m-2 px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
+            className="w-1/2 px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
             required
           />
         </div>
-        <div className="mb-4">
+        <div className="flex  mb-4">
+        <div className='flex-row mr-4'>
           <label htmlFor="contactNumber" className="block text-gray-700 font-semibold mb-2">
             Contact Number
           </label>
@@ -59,12 +60,12 @@ const Users = () => {
             name="contactNumber"
             value={formData.contactNumber}
             onChange={handleChange}
-            className="w-40  ml-4 px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
+            className="w-40  px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
             required
           />
-        </div>
-        <div className="mb-4">
-          <label htmlFor="userType" className="block text-gray-700 font-semibold mb-2">
+          </div>
+          <div className='flex-row  mr-4'>
+            <label htmlFor="userType" className="block text-gray-700 font-semibold mb-2">
             User Type
           </label>
           <select
@@ -80,8 +81,8 @@ const Users = () => {
             <option value="Teacher">Teacher</option>
             <option value="Admin">Admin</option>
           </select>
-        </div>
-        <div className="mb-4">
+          </div>
+          <div className='flex-row  mr-4'>
           <label htmlFor="password" className="block text-gray-700 font-semibold mb-2">
             Password
           </label>
@@ -94,8 +95,16 @@ const Users = () => {
             className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500"
             required
           />
+
+          </div>
         </div>
-        <div className="text-center">
+        <div className="mb-4">
+        
+        </div>
+        <div className="mb-4">
+      
+        </div>
+        <div className="flex justify-start text-center mr-4">
           <button
             type="submit"
             className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-6 rounded-lg focus:outline-none"

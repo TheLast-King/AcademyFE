@@ -12,13 +12,13 @@ const Admin = () => {
     </div>
     <div className='flex flex-row m-4'>
     <div className='m-4'>
-    <Link to="/users">
+    <Link to="/admin/user">
       <img src={imguser} alt="Add new user" />
       <h2> Add User</h2>
     </Link>
     </div>
     <div className='m-4'>
-    <Link to="/users">
+    <Link to="/admin/teacher">
       <img src={imguser} alt="Add new user" />
       <h2> Teacher info</h2>
     </Link>

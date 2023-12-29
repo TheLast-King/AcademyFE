@@ -24,16 +24,14 @@ function Login() {
   
     try {
       const res = await axios.post(`${Config.baseurl}/${Config.urls.login}`, formData);
-      const { token } = res.data; // Assuming the token is returned in the response
+      const { token } = res.data; 
       console.log(token)
   
-      // const data = await response.json();
   
       if (token) {
         console.log('Login successful!');
-        localStorage.setItem('token', token); // Save the token in localStorage
+        localStorage.setItem('token', token); 
 
-        // Decode the token to access its payload
         const decodedToken = jwtDecode(token);
         console.log('Decoded Token:', decodedToken);
 
